@@ -1,0 +1,12 @@
+name: Test 1
+
+on:
+  workflow_call:
+
+jobs:
+  echo-test-1:
+    runs-on: windows-latest
+
+    steps:
+      - name: Echo from test-1.yml
+        run: echo "Test 1 from windows-latest :D"

@@ -6,7 +6,15 @@ on:
       - development
 
 jobs:
+  test-1:
+    uses: ./.github/workflows/test-1.yml
+
+  test-2:
+    needs: test-1
+    uses: ./.github/workflows/test-2.yml
+
   full-dotnet-workflow:
+    needs: test-2
     runs-on: windows-latest
 
     steps:
