@@ -3,7 +3,7 @@ name: Main workflow
 on:
   push:
     branches:
-      - development
+      - main
 
 jobs:
   test-1:
