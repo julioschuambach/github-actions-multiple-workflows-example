@@ -1,0 +1,31 @@
+name: Main workflow
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  full-dotnet-workflow:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Dotnet setup
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Clean solution
+      run: dotnet clean "./GithubActionsMultipleWorkflowsExample"
+
+    - name: Restore solution
+      run: dotnet restore "./GithubActionsMultipleWorkflowsExample"
+
+    - name: Run tests
+      run: dotnet test "./GithubActionsMultipleWorkflowsExample"
+
+    - name: Build solution
+      run: dotnet build "./GithubActionsMultipleWorkflowsExample" --configuration Release
